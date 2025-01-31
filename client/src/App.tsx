@@ -1,14 +1,12 @@
 import "./globals.css";
-import { Button } from "@material-tailwind/react";
 
 function App() {
   return (
     <>
       <div className="card">
-        {/* Utilisation correcte du composant Button_UI */}
-        <Button color="blue" size="lg" onClick={() => console.log("clicked")}>
+        <button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() => console.log("clicked")}>
           Button
-        </Button>
+        </button>
       </div>
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </>
