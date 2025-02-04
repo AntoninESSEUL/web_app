@@ -1,34 +1,34 @@
-// import express, { Request, Response } from "express";
-// import rolesRouter from "./routes/roles";
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { Role } from "./models/Role";
 
-import sequelize from './db_connection';  // Assure-toi du bon chemin vers le fichier
-import getAllRoles from './routes/roles';
+export const AppDataSource = new DataSource({
+  type: "mysql",
+  host: "localhost",
+  port: 3306,
+  username: "root",
+  password: "rootpassword",
+  database: "mydb",
+  entities: [Role],
+  synchronize: true,
+  logging: true,
+});
 
-async function displayRoles() {
-  try {
-    // Attend que la connexion soit établie avant de récupérer les rôles
-    await sequelize.authenticate();
-    console.log("Connexion à la base de données réussie!");
+// to initialize the initial connection with the database, register all entities
+// and "synchronize" database schema, call "initialize()" method of a newly created database
+// once in your application bootstrap
+AppDataSource.initialize()
+  .then(async () => {
+    // Create a new role instance and save it to the database
+    const role = new Role();
+    role.name = "Role 2";
 
-    const roles = await getAllRoles();
-    console.log("Liste des rôles :", roles.map(role => role.get('name')));
-  } catch (error) {
-    console.error("Erreur lors de la connexion ou de l'affichage des rôles :", error);
-  }
-}
+    const roleRepository = AppDataSource.getRepository(Role);
+    await roleRepository.save(role);
+    console.log("Role has been saved");
 
-displayRoles();
-
-
-
-// const app = express();
-
-// app.use("/api/roles", rolesRouter);
-
-// const PORT = 3000;
-
-// app.get("/api/roles", (request: Request, response: Response) => {});
-
-// app.listen(PORT, () => {
-//   console.log(`Running on Port ${PORT}`);
-// });
+    // Fetch all roles from the database
+    const savedRoles = await roleRepository.find();
+    console.log("All roles from the db: ", savedRoles);
+  })
+  .catch((error) => console.log(error));
