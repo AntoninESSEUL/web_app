@@ -1,0 +1,24 @@
+src/
+├── config/
+│   ├── database.ts
+│   └── env.ts
+├── controllers/
+│   └── userController.ts
+├── models/
+│   └── (models TypeORM)
+├── middlewares/
+│   ├── authMiddleware.ts
+│   └── errorHandler.ts
+├── repositories/
+│   └── userRepository.ts
+├── routes/
+│   └── userRoutes.ts
+├── services/
+│   └── userService.ts
+├── types/
+│   └── custom.d.ts
+├── utils/
+│   ├── validation.ts
+│   └── logger.ts
+├── app.ts
+└── server.ts
