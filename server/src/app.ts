@@ -1,13 +1,12 @@
-import cors from "cors";
 import express from "express";
-import routes from "./routes";
+import userRoutes from "./routes/userRoutes";
+
 const app = express();
 
-// Middleware
-app.use(cors());
 app.use(express.json());
+app.use("/api/users", userRoutes);
 
-// Routes
-app.use("/api", routes);
+// Important : le middleware d'erreur doit être le dernier middleware
+//app.use(errorHandler);
 
 export default app;

@@ -19,6 +19,7 @@ src/
 │   └── custom.d.ts
 ├── utils/
 │   ├── validation.ts
+│   └── errors.ts
 │   └── logger.ts
 ├── app.ts
 └── server.ts
