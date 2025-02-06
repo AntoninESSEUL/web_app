@@ -10,10 +10,10 @@ const userController = new UserController(userService);
 
 const router = Router();
 
-router.get("/", userController.getAll);
+router.get("/all", userController.getAll);
 router.get("/:id", userController.getById);
-router.post("/", userController.create);
-router.put("/:id", userController.update);
-router.delete("/:id", userController.delete);
+router.post("/create", userController.create);
+router.put("/update/:id", userController.update);
+router.delete("/delete/:id", userController.delete);
 
 export default router;

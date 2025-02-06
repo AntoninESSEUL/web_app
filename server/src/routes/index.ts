@@ -1,17 +1,14 @@
-import { Request, Response, Router } from "express";
-// Importez vos différents routeurs
-// import userRoutes from "./userRoutes";
-// import productRoutes from "./productRoutes";
+import { Router } from "express";
+import userRoutes from "./userRoutes"; // Importation du module utilisateur
 
 const router = Router();
 
-// Route de test de base
-router.get("/", (req: Request, res: Response) => {
+// Route de test
+router.get("/", (req, res) => {
   res.json({ message: "API is working!" });
 });
 
-// Ajoutez vos routes spécifiques
-// router.use('/users', userRoutes);
-// router.use('/products', productRoutes);
+// User routes
+router.use("/api/users", userRoutes);
 
 export default router;
