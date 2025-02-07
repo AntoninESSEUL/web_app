@@ -4,7 +4,7 @@ import { Users } from "./Users";
 
 @Entity("Level")
 export class Level {
-  @PrimaryGeneratedColumn({ name: "id_level" })
+  @PrimaryGeneratedColumn()
   idLevel!: number;
 
   @Column({ unique: true })

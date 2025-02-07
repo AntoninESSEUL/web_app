@@ -5,18 +5,6 @@ import { UserService } from "../services/userService";
 export class UserController {
   constructor(private userService: UserService) {}
 
-  getAll = async (req: Request, res: Response, next: NextFunction) => {
-    try {
-      const users = await this.userService.getAll();
-      res.json({
-        status: 200,
-        data: users,
-      });
-    } catch (error) {
-      next(error);
-    }
-  };
-
   getById = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = Number(req.params.id);
@@ -29,7 +17,19 @@ export class UserController {
       next(error);
     }
   };
-  //
+
+  getAll = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const users = await this.userService.getAll();
+      res.json({
+        status: 200,
+        data: users,
+      });
+    } catch (error) {
+      next(error);
+    }
+  };
+
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const userData: Users = req.body;

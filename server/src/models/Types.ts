@@ -3,7 +3,7 @@ import { Documents } from "./Documents";
 
 @Entity("Types")
 export class Types {
-  @PrimaryGeneratedColumn({ name: "id_type" })
+  @PrimaryGeneratedColumn()
   idType!: number;
 
   @Column({ length: 30, unique: true })

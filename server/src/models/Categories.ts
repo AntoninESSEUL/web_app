@@ -3,7 +3,7 @@ import { Documents } from "./Documents";
 
 @Entity("Categories")
 export class Categories {
-  @PrimaryGeneratedColumn({ name: "id_category" })
+  @PrimaryGeneratedColumn()
   idCategory!: number;
 
   @Column({ length: 20, unique: true })

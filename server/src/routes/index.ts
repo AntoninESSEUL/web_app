@@ -1,14 +1,13 @@
+// routes/index.ts
 import { Router } from "express";
-import userRoutes from "./userRoutes"; // Importation du module utilisateur
+
+import authRoutes from "./authRoute";
+import userRoutes from "./userRoute";
 
 const router = Router();
 
-// Route de test
-router.get("/", (req, res) => {
-  res.json({ message: "API is working!" });
-});
-
-// User routes
+// Routes for the API
 router.use("/api/users", userRoutes);
+router.use("/api/auth", authRoutes);
 
 export default router;

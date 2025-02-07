@@ -3,7 +3,7 @@ import { Users } from "./Users";
 
 @Entity("Companies")
 export class Companies {
-  @PrimaryGeneratedColumn({ name: "id_company" })
+  @PrimaryGeneratedColumn()
   idCompany!: number;
 
   @Column({ length: 50, unique: true })

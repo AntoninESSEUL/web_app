@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { AppDataSource } from "../config/database";
 import { UserController } from "../controllers/userController";
+
 import { Users } from "../models/Users";
 import { UserService } from "../services/userService";
 

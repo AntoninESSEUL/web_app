@@ -5,13 +5,13 @@ import { Roles } from "./Roles";
 
 @Entity("Users")
 export class Users {
-  @PrimaryGeneratedColumn({ name: "id_user" })
+  @PrimaryGeneratedColumn()
   idUser!: number;
 
   @Column({ length: 30 })
   name!: string;
 
-  @Column({ name: "first_name", length: 30 })
+  @Column({ length: 30, nullable: true, name: "first_name" })
   firstName!: string;
 
   @Column({ length: 30, unique: true })
@@ -23,15 +23,15 @@ export class Users {
   @Column({ length: 20, nullable: true })
   phone!: string;
 
-  @ManyToOne(() => Level, (level) => level.users, { nullable: false })
-  @JoinColumn({ name: "id_level" })
+  @ManyToOne(() => Level, (level) => level.users)
+  @JoinColumn({ name: "idLevel" })
   level!: Level;
 
-  @ManyToOne(() => Roles, (role) => role.users, { nullable: false })
-  @JoinColumn({ name: "id_role" })
+  @ManyToOne(() => Roles, (role) => role.users)
+  @JoinColumn({ name: "idRole" })
   role!: Roles;
 
-  @ManyToOne(() => Companies, (company) => company.users, { nullable: false })
-  @JoinColumn({ name: "id_company" })
+  @ManyToOne(() => Companies, (company) => company.users)
+  @JoinColumn({ name: "idCompany" })
   company!: Companies;
 }

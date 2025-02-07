@@ -5,7 +5,7 @@ import { Types } from "./Types";
 
 @Entity("Documents")
 export class Documents {
-  @PrimaryGeneratedColumn({ name: "id_document" })
+  @PrimaryGeneratedColumn()
   idDocument!: number;
 
   @Column({ length: 255, unique: true })
@@ -17,23 +17,23 @@ export class Documents {
   @Column({ length: 1000, nullable: true })
   description!: string;
 
-  @ManyToOne(() => Folders, (folder) => folder.documents, { nullable: false })
-  @JoinColumn({ name: "id_folder" })
+  @ManyToOne(() => Folders, (folder) => folder.documents)
+  @JoinColumn({ name: "idFolder" })
   folder!: Folders;
 
-  @ManyToOne(() => Types, (type) => type.documents, { nullable: false })
-  @JoinColumn({ name: "id_type" })
+  @ManyToOne(() => Types, (type) => type.documents)
+  @JoinColumn({ name: "idType" })
   type!: Types;
 
   @ManyToMany(() => Categories, (category) => category.documents)
   @JoinTable({
     name: "Documents_Categories",
     joinColumn: {
-      name: "id_document",
+      name: "idDocument",
       referencedColumnName: "idDocument",
     },
     inverseJoinColumn: {
-      name: "id_category",
+      name: "idCategory",
       referencedColumnName: "idCategory",
     },
   })
