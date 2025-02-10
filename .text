@@ -1,3 +1,48 @@
+///////////////// FRONTEND ///////////////////
+src/
+├── assets/
+│   ├── images/
+│   └── styles/
+│       └── global.css
+├── components/
+│   ├── common/
+│   │   ├── Button/
+│   │   │   ├── Button.tsx
+│   │   │   └── Button.css
+│   │   ├── Input/
+│   │   └── Card/
+│   └── features/
+│       └── User/
+│           ├── UserProfile/
+│           └── UserList/
+├── hooks/
+│   ├── useAuth.ts
+│   └── useForm.ts
+├── pages/
+│   ├── Home/
+│   │   ├── Home.tsx
+│   │   └── Home.css
+│   ├── Login/
+│   └── Profile/
+├── services/
+│   └── api/
+│       ├── user.ts
+│       └── auth.ts
+├── store/
+│   ├── slices/
+│   │   └── userSlice.ts
+│   └── store.ts
+├── types/
+│   └── index.ts
+├── utils/
+│   ├── constants.ts
+│   ├── formatters.ts
+│   └── validators.ts
+├── App.tsx
+├── index.tsx
+└── routes.tsx
+
+///////////////// BACKEND ///////////////////
 src/
 ├── config/
 │   ├── database.ts
