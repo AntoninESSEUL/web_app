@@ -14,7 +14,7 @@ function App() {
   return (
     <BaseStyles>
       <div className="flex items-center justify-center h-screen bg-white sm:bg-gray-100">
-        <div className="sm:bg-white p-6 rounded-2xl sm:shadow-lg w-96 m-4 max-w-md">
+        <div className="sm:bg-white p-6 rounded-2xl sm:shadow-lg w-96 max-w-md">
           <h2 className="text-2xl font-semibold text-center mb-4">Login</h2>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
