@@ -1,7 +1,7 @@
 import axios from "axios";
 import { LoginResponse } from "../types/auth";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3000/api";
+const API_URL = import.meta.env.REACT_APP_API_URL || "http://localhost:3000/api";
 
 export const authApi = {
   login: async (email: string, password: string): Promise<LoginResponse> => {
