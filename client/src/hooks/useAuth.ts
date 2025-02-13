@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { authApi } from "../services/auth";
 import { LoginResponse, ValidationState } from "../types/auth";
@@ -30,11 +31,18 @@ export const useAuth = () => {
     setLoading(true);
     try {
       const response = await authApi.login(email, password);
-      if (response.success) {
-        localStorage.setItem("user", JSON.stringify(response.user));
+      if (!response.success) {
+        setValidation((prev) => ({
+          ...prev,
+          password: { valid: false, message: response.message || "Échec de la connexion" },
+        }));
+        return null;
       }
+
       return response;
     } catch (error) {
+      console.error("Erreur lors de la connexion :", error);
+
       if (axios.isAxiosError(error)) {
         const errorMessage = error.response?.data?.message || "Erreur de connexion";
         setValidation((prev) => ({
@@ -42,6 +50,7 @@ export const useAuth = () => {
           password: { valid: false, message: errorMessage },
         }));
       }
+
       return null;
     } finally {
       setLoading(false);

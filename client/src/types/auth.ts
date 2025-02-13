@@ -33,6 +33,7 @@ export interface LoginResponse {
   user?: User;
   message?: string;
   error?: string;
+  token: string;
 }
 
 // Interface de validation des formulaires

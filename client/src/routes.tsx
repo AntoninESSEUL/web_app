@@ -1,6 +1,5 @@
 import { createBrowserRouter, Navigate, RouteObject } from "react-router-dom";
-import { PrivateRoute } from "./components/router/PrivateRoute";
-import { PublicRoute } from "./components/router/PublicRoute";
+
 import { AppLayout } from "./layouts/AppLayout";
 import { DashboardPage } from "./pages/DashboardPage";
 import { LoginPage } from "./pages/LoginPage";
@@ -17,27 +16,15 @@ const routes: RouteObject[] = [
       },
       {
         path: "login",
-        element: (
-          <PublicRoute>
-            <LoginPage />
-          </PublicRoute>
-        ),
+        element: <LoginPage />,
       },
       {
         path: "dashboard",
-        element: (
-          <PrivateRoute>
-            <DashboardPage />
-          </PrivateRoute>
-        ),
+        element: <DashboardPage />,
       },
       {
         path: "profile",
-        element: (
-          <PrivateRoute>
-            <ProfilePage />
-          </PrivateRoute>
-        ),
+        element: <ProfilePage />,
       },
       {
         path: "*",

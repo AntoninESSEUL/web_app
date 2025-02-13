@@ -17,7 +17,7 @@ export class Users {
   @Column({ length: 30, unique: true })
   mail!: string;
 
-  @Column({ length: 255 })
+  @Column({ length: 60 })
   password!: string;
 
   @Column({ length: 20, nullable: true })

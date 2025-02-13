@@ -1,14 +1,18 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useLogout } from "../../hooks/useLogout";
+
+export const LogoutButton = () => {
+  const logout = useLogout();
+
+  return (
+    <button onClick={logout} className="hover:underline">
+      Déconnexion
+    </button>
+  );
+};
 
 const Navbar: React.FC = () => {
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    localStorage.clear();
-    navigate("/login");
-  };
-
   return (
     <nav className="bg-blue-600 p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
@@ -20,9 +24,8 @@ const Navbar: React.FC = () => {
           <Link to="/profile" className="hover:underline">
             Profile
           </Link>
-          <button onClick={handleLogout} className="hover:underline">
-            Déconnexion
-          </button>
+          {/* 🔥 Utilisation correcte du bouton de déconnexion */}
+          <LogoutButton />
         </div>
       </div>
     </nav>
